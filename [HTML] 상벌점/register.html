@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="./css/register.css" rel="stylesheet" type="text/css"/>
+    <title>KY_그린마일리지</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="./image/favicon-96x96.png">
+</head>
+</head>
+
+<body>
+   <div class="box" id="ib">
+        <form>
+            <h2>회원가입</h2>
+            <div class="inputBox">
+                <input type="text" id="ID" required="required">
+                <span>아이디</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="PASSWORD" required="required">
+                <span>비밀번호</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="NAME" required="required">
+                <span>이름</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="CODE" required="required">
+                <span>인증코드</span>
+                <i></i>
+            </div>
+            <input type="button" value="회원가입" onclick="register()">
+        </form>
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="./js/register.js"></script>
+
+</html>

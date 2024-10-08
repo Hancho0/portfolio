@@ -1,0 +1,130 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyCs3ZL0ol-H_8LEWHbeJB1L2vkNE9fOwEo",
+    authDomain: "kyeryong-rewards.firebaseapp.com",
+    projectId: "kyeryong-rewards",
+    storageBucket: "kyeryong-rewards.appspot.com",
+    messagingSenderId: "921121551619",
+    appId: "1:921121551619:web:ca1ba633896730495da536",
+    measurementId: "G-7H5WG75HNY"
+};
+
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+var cookie = document.cookie;
+
+var setCookie = function (name, value, exp) {
+    var date = new Date();
+    date.setTime(date.getTime() + exp * 1 * 60 * 60 * 1000);
+    document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+};
+
+var getCookie = function (name) {
+    var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return value ? value[2] : null;
+};
+
+var deleteCookie = function (name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+}
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
+
+closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
+  menuBtnChange();//calling the function(optional)
+});
+
+// following are the code to change sidebar button(optional)
+function menuBtnChange() {
+ if(sidebar.classList.contains("open")){
+   closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+ }else {
+   closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+ }
+}
+
+var NAME = getCookie("KY_Name");
+var TEAM = getCookie("KY_Team");
+
+function setting() {
+    if (TEAM != "생활안전부") {
+        alert("접근이 불가능합니다.")
+    } else {
+        location.href = "setting.html";
+    }
+}
+
+function logout() {
+    deleteCookie("KY_Name");
+    deleteCookie("KY_Login");
+    alert("로그아웃 되었습니다.")
+    location.href = "index.html";
+}
+
+
+const gradeSelect = document.getElementById('grade');
+const classSelect = document.getElementById('class');
+const studentListDiv = document.getElementById('studentList');
+
+// 학년 선택 시
+gradeSelect.addEventListener('change', () => {
+  const selectedGrade = gradeSelect.value;
+  if (selectedGrade === '') {
+    classSelect.innerHTML = '<option value="">반을 선택하세요</option>';
+    studentListDiv.innerHTML = '';
+    return;
+  }
+
+  // 해당 학년의 반 설정
+  classSelect.innerHTML = '';
+  for (let i = 1; i <= 9 ; i++) {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = i + '반';
+    classSelect.appendChild(option);
+  }
+
+  studentListDiv.innerHTML = '';
+  updateStudentList(selectedGrade, classSelect.value);
+});
+
+// 반 선택 시
+classSelect.addEventListener('change', () => {
+  const selectedGrade = gradeSelect.value;
+  const selectedClass = classSelect.value;
+  studentListDiv.innerHTML = '';
+  updateStudentList(selectedGrade, selectedClass);
+});
+
+// 학생 목록 업데이트
+function updateStudentList(grade, className) {
+  if (grade && className) {
+    for (let i = 1; i <= 15; i++) {
+      const studentDiv = document.createElement('div');
+      studentDiv.textContent = `${grade}학년 ${className}반 ${i}번 `;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = '이름';
+      studentDiv.appendChild(input);
+      studentListDiv.appendChild(studentDiv);
+    }
+  }
+}
+
+$(document).ready(function () {
+    var login_access = getCookie("KY_Login");
+    var cookie_a = cookie.indexOf("KY_Login")
+    if (cookie_a != -1) {
+        if (login_access == "true") {
+            document.querySelector(".name").innerHTML=`${NAME} 선생님`;
+            document.querySelector(".job").innerHTML=`부서 : ${TEAM}`;
+        }
+    } else {
+        alert("로그인이 필요합니다.");
+        location.href = "login.html";
+    }
+});

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- Website - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="./css/rule.css" rel="stylesheet" type="text/css" />
+    <title>KY_그린마일리지</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/png" sizes="96x96" href="./image/favicon-96x96.png">
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-school icon"></i>
+        <div class="logo_name">KY_그린마일리지</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+            <a href="https://kyeryong-rewards.digital/">
+                <i class='bx bx-grid-alt' ></i>
+                <span class="links_name">홈</span>
+            </a>
+            <span class="tooltip">홈</span>
+        </li>
+        <li>
+            <a href="input.html">
+                <i class='bx bxs-bookmarks' ></i>
+                <span class="links_name">상·벌점 입력</span>
+            </a>
+            <span class="tooltip">상·벌점 입력</span>
+        </li>
+        <li>
+            <a href="check.html">
+                <i class='bx bx-id-card'></i>
+                <span class="links_name">상·벌점 조회</span>
+            </a>
+            <span class="tooltip">상·벌점 조회</span>
+        </li>
+        <li>
+            <a href="rule.html">
+                <i class='bx bxs-bookmarks' ></i>
+                <span class="links_name">상·벌점 규정</span>
+            </a>
+            <span class="tooltip">상·벌점 규정</span>
+        </li>
+        <li>
+          <a onclick="setting()" style="cursor: pointer;">
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">관리자 설정</span>
+            </a>
+            <span class="tooltip">관리자 설정</span>
+        </li>
+        <li class="profile">
+          <div class="profile-details">
+            <img src="/image/user.png" alt="profileImg" />
+            <div class="name_job">
+              <div class="name">홍길동 선생님</div>
+              <div class="job">부서 : 생활안전부</div>
+            </div>
+          </div>
+          <i class="bx bx-log-out" id="log_out" onclick="logout()"></i>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="box1"></div>
+      <div class="container">
+        <label for="grade">학년:</label>
+        <select id="grade">
+          <option value="">학년을 선택하세요</option>
+          <option value="1">1학년</option>
+          <option value="2">2학년</option>
+          <option value="3">3학년</option>
+        </select>
+        <label for="class">반:</label>
+        <select id="class">
+          <option value="">반을 선택하세요</option>
+        </select>
+        <br>
+        <div id="studentList"></div>
+        <input type="button" value="저장하기" onclick="save()" class="savebtn">
+
+        <div class="box2"></div>
+        <div class="container2">
+          <label for="grade">학년:</label>
+          <select id="grade">
+            <option value="">학년을 선택하세요</option>
+            <option value="1">1학년</option>
+            <option value="2">2학년</option>
+            <option value="3">3학년</option>
+          </select>
+          <label for="class">반:</label>
+          <select id="class">
+            <option value="">반을 선택하세요</option>
+          </select>
+          <br>
+          <div id="studentList"></div>
+          <input type="button" value="저장하기" onclick="save()" class="savebtn">
+  
+        <div class="box3"></div>
+        <div class="container3">
+          <label for="grade">학년:</label>
+          <select id="grade">
+            <option value="">학년을 선택하세요</option>
+            <option value="1">1학년</option>
+            <option value="2">2학년</option>
+            <option value="3">3학년</option>
+          </select>
+          <label for="class">반:</label>
+          <select id="class">
+            <option value="">반을 선택하세요</option>
+          </select>
+          <label for="class">번호:</label>
+          <select id="class">
+            <option value="">번호를 선택하세요</option>
+          </select>
+          <br>
+          <div id="studentList"></div>
+          <input type="button" value="저장하기" onclick="save()" class="savebtn">
+  
+      </div>
+    </section>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="./js/rule.js"></script>
+</html>

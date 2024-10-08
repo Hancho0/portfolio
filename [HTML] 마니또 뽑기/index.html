@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <title>마니또 뽑기</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="./image/favicon-96x96.png">
+</head>
+</head>
+
+<body>
+   <div class="box" id="ib">
+        <form>
+            <h2>마니또 뽑기</h2>
+            <div class="inputBox">
+                <input type="text" id="CLASS_NAME" required="required">
+                <span>나의 이름 ex) 홍길동</span>
+                <i></i>
+            </div>
+            <input type="button" value="뽑기" onclick="generateSecretSanta()" class="loginbtn">
+            <input type="button" value="다운로드" onclick="downloadResults()" class="loginbtn">
+        </form>
+    </div>
+    <div id="result" class="res"></div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="./script.js"></script>
+
+</html>
